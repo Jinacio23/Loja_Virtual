@@ -1,4 +1,5 @@
 <?php
+echo __DIR__;
 require_once __DIR__.'/core/Core.php';
 require_once __DIR__.'/router/routers.php';
 

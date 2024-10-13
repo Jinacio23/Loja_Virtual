@@ -33,9 +33,9 @@ class Core
 
                 //processando caminho do arquivo
                 $dir = __DIR__;
-                $part = explode('\\', $dir);
+                $part = str_word_count($dir, 1, ':');
                 array_pop($part);
-                $newDir = implode('\\', $part);
+                $newDir = implode('/', $part);
 
                 //redirecionando para rota correspondente
                 require_once "$newDir/app/controller/$currentController.php";
@@ -51,9 +51,9 @@ class Core
         if (!$routerFound) {
             //processando caminho do arquivo
             $dir = __DIR__;
-            $part = explode('\\', $dir);
+            $part = str_word_count($dir, 1, ':');
             array_pop($part);
-            $newDir = implode('\\', $part);
+            $newDir = implode('/', $part);
 
             require_once "$newDir/app/controller/NotFoundController.php";
 
