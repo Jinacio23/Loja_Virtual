@@ -35,10 +35,18 @@ class Core
                 $dir = __DIR__;
                 $part = str_word_count($dir, 1, ':');
                 array_pop($part);
-                $newDir = implode('/', $part);
 
+                if($part[0] == 'C:'){
+                    //Para Windows
+                    $newDir = implode('/', $part)."/";
+                } else {
+                    //Linux do Zé
+                    $newDir = '';
+                }
+
+                echo $newDir;
                 //redirecionando para rota correspondente
-                require_once "$newDir/app/controller/$currentController.php";
+                require_once $newDir."app/controller/$currentController.php";
 
                 //Instanciando objeto e executando rota correspondente
                 $newController = new $currentController();
@@ -53,9 +61,16 @@ class Core
             $dir = __DIR__;
             $part = str_word_count($dir, 1, ':');
             array_pop($part);
-            $newDir = implode('/', $part);
 
-            require_once "$newDir/app/controller/NotFoundController.php";
+            if($part[0] == 'C:'){
+                //Para Windows
+                $newDir = implode('/', $part)."/";
+            } else {
+                //Linux do Zé
+                $newDir = '';
+            }
+
+            require_once $newDir."app/controller/NotFoundController.php";
 
             $controller = new NotFoundController();
             $controller->index();

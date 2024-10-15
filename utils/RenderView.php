@@ -14,8 +14,15 @@ class RenderView
         $dir = __DIR__;
         $part = str_word_count($dir, 1, ':');
         array_pop($part);
-        $newDir = implode('/', $part);
 
-        require_once "$newDir/app/view/$view.php";
+        if($part[0] == 'C:'){
+            //Para Windows
+            $newDir = implode('/', $part)."/";
+        } else {
+            //Linux do Zé
+            $newDir = '';
+        }
+
+        require_once $newDir."app/view/$view.php";
     }
 }
