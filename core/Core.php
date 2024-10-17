@@ -69,6 +69,14 @@ class Core
                 $newDir = '';
             }
 
+            if($part[0] == 'C:'){
+                //Para Windows
+                $newDir = implode('/', $part)."/";
+            } else {
+                //Linux do Zé
+                $newDir = '';
+            }
+
             require_once $newDir."app/controller/NotFoundController.php";
 
             $controller = new NotFoundController();
