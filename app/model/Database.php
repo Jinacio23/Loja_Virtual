@@ -1,10 +1,10 @@
 <?php
 
 class Database{
-    private $database = 'bdaula';
-    private $host = 'localhost';
+    private $database = 'bdAula';
+    private $host = 'laradock-mysql-1';
     private $user = "root";
-    private $password = "";
+    private $password = "root";
 
 
     public function getConnection(){
@@ -12,18 +12,6 @@ class Database{
         //Mysqli
         $mysqli = mysqli_connect($this->host, $this->user, $this->password, $this->database);
         return $mysqli;
-
-        //---- em PDO -----
-        //
-        // try {
-            
-        //     $pdo = new PDO("mysql:dbname=$this->database,host=$this->host,user=$this->user,$this->password");
-            
-        //     return $pdo;
-    
-        // } catch (PDOException $e) {
-        //     echo $e;
-        // }
 
     }
 

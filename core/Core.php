@@ -43,8 +43,7 @@ class Core
                     //Linux do Zé
                     $newDir = '';
                 }
-
-                echo $newDir;
+                
                 //redirecionando para rota correspondente
                 require_once $newDir."app/controller/$currentController.php";
 
